@@ -3,7 +3,9 @@ html {
   font-family: $font-family;
   background: $background-color;
   color: $font-color;
-  line-height: 1.4;
+  font-weight: $font-weight;
+  line-height: $font-height;
+  font-style: normal;
 }
 *,
 *::before,
@@ -42,12 +44,6 @@ ul li {
 img {
   vertical-align: top;
 }
-
-img,
-svg {
-  max-width: 100%;
-  height: auto;
-}
 input,
 textarea,
 button,
@@ -56,10 +52,14 @@ select {
   font-size: inherit;
   color: inherit;
   background-color: transparent;
+  border-width: 0px;
 }
 
 input::-ms-clear {
   display: none;
+}
+input:focus-visible {
+  outline: none;
 }
 button::-moz-focus-inner {
   padding: 0;
