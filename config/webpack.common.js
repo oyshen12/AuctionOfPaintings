@@ -22,7 +22,8 @@ module.exports = {
   output: {
     path: paths.build,
     filename: "[name].bundle.js",
-    publicPath: "/",
+    publicPath:
+      process.env.NODE_ENV === "production" ? "/AuctionOfPaintings/" : "/",
   },
 
   plugins: [
