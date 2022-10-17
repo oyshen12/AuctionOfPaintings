@@ -11,7 +11,7 @@ module.exports = merge(common, {
 
   output: {
     path: paths.build,
-    publicPath: "/",
+    publicPath: "/AuctionOfPaintings/",
     filename: "js/[name].[contenthash].bundle.js",
   },
 
