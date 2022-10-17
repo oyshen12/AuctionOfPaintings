@@ -90,6 +90,8 @@ export default {
   padding-bottom: 24px;
   cursor: pointer;
   transition: all 0.5s ease-out;
+  align-self: center;
+  justify-self: center;
 
   &:hover {
     border: 1px solid #382e2b;

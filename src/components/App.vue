@@ -34,7 +34,9 @@
     </main>
     <footer class="footer">
       <div class="footer__content">
-        <navigation-component></navigation-component>
+        <div class="footer__nav">
+          <navigation-component></navigation-component>
+        </div>
         <div class="footer__info">
           <div class="footer__info-item">
             <img src="../../public/phone.png" width="14px" height="14px" />
@@ -105,6 +107,9 @@ export default {
   @media (max-width: 1240px) {
     padding: 0 20px;
   }
+  @media (max-width: 500px) {
+    padding: 0 20px 0 0;
+  }
 
   &__content {
     display: flex;
@@ -113,10 +118,20 @@ export default {
     padding: 24px 0px;
     width: 100%;
     max-width: 1216px;
+
+    @media (max-width: 500px) {
+      align-items: flex-start;
+    }
   }
 
   &__search {
     display: flex;
+
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: flex-end;
+      margin-top: 10px;
+    }
 
     &-input {
       border: 1px solid #e1e1e1;
@@ -129,6 +144,10 @@ export default {
 
       @media (max-width: 1240px) {
         width: auto;
+      }
+
+      @media (max-width: 500px) {
+        margin-bottom: 10px;
       }
     }
   }
@@ -151,6 +170,16 @@ export default {
     padding: 38px 0px;
     width: 100%;
     max-width: 1216px;
+
+    @media (max-width: 910px) {
+      justify-content: center;
+    }
+  }
+
+  &__nav {
+    @media (max-width: 910px) {
+      display: none;
+    }
   }
 
   &__info {
@@ -167,6 +196,16 @@ export default {
       flex-direction: column;
       align-items: flex-end;
       justify-content: flex-end;
+    }
+    @media (max-width: 1000px) {
+      width: auto;
+    }
+    @media (max-width: 910px) {
+      flex-direction: row;
+    }
+    @media (max-width: 500px) {
+      flex-direction: column;
+      align-items: center;
     }
 
     &-item {
@@ -186,6 +225,13 @@ export default {
       @media (max-width: 1140px) {
         margin-right: 0px;
       }
+      @media (max-width: 910px) {
+        margin-right: 30px;
+
+        &:last-child {
+          margin-right: 0px;
+        }
+      }
     }
   }
 }
@@ -204,6 +250,10 @@ export default {
     font-size: 24px;
     align-self: flex-start;
     margin-top: 45px;
+
+    @media (max-width: 500px) {
+      text-align: center;
+    }
   }
 
   &__pictures {
@@ -217,6 +267,12 @@ export default {
     @media (max-width: 1240px) {
       grid-template-columns: 1fr 1fr 1fr;
       margin-bottom: 39px;
+    }
+    @media (max-width: 950px) {
+      grid-template-columns: 1fr 1fr;
+    }
+    @media (max-width: 650px) {
+      grid-template-columns: 1fr;
     }
   }
 }

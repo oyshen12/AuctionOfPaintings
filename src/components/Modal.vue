@@ -73,6 +73,13 @@ export default {
     border-radius: 2px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
     transition: all 0.3s ease;
+
+    @media (max-width: 600px) {
+      max-width: 360px;
+    }
+    @media (max-width: 360px) {
+      max-width: 320px;
+    }
   }
 
   &__description {
