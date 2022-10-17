@@ -4,6 +4,7 @@
     :style="{
       opacity: picture.active ? 1 : 0.4,
     }"
+    @click="clickEmit"
   >
     <img
       :src="require('../../public/' + this.picture.img)"
@@ -72,6 +73,9 @@ export default {
       setTimeout(() => {
         this.loading = false;
       }, 2000);
+    },
+    clickEmit() {
+      this.$emit("clickEmit", this.picture);
     },
   },
 };

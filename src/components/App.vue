@@ -3,7 +3,7 @@
   <div class="app__wrap">
     <header class="header">
       <div class="header__content">
-        <navigation></navigation>
+        <navigation-component></navigation-component>
         <div class="header__search">
           <input
             placeholder="Поиск по названию картины"
@@ -22,13 +22,19 @@
             v-for="picture in filtredPictures"
             :picture="picture"
             :key="picture.id"
+            @clickEmit="openModal"
           ></picture-card>
         </div>
       </div>
+      <modal
+        v-if="showModal"
+        @close="showModal = false"
+        :picture="pictureModal"
+      ></modal>
     </main>
     <footer class="footer">
       <div class="footer__content">
-        <navigation></navigation>
+        <navigation-component></navigation-component>
         <div class="footer__info">
           <div class="footer__info-item">
             <img src="../../public/phone.png" width="14px" height="14px" />
@@ -45,16 +51,23 @@
 </template>
 
 <script>
-import Navigation from "./Nav.vue";
+import NavigationComponent from "./Nav.vue";
 import Btn from "./Btn.vue";
 import PictureCard from "./PictureCard.vue";
-import { mapGetters, mapMutations, mapState } from "vuex";
-
+import Modal from "./Modal.vue";
+import { mapGetters, mapMutations } from "vuex";
 export default {
-  components: { Navigation, Btn, PictureCard },
+  components: {
+    NavigationComponent,
+    Btn,
+    PictureCard,
+    Modal,
+  },
   data() {
     return {
+      showModal: false,
       filtredStr: "",
+      pictureModal: {},
     };
   },
   computed: {
@@ -64,6 +77,10 @@ export default {
     ...mapMutations(["setFiltredStr", "downloadData"]),
     search() {
       this.setFiltredStr(this.filtredStr);
+    },
+    openModal(pictureModal) {
+      this.pictureModal = pictureModal;
+      this.showModal = true;
     },
   },
   mounted() {
@@ -85,6 +102,10 @@ export default {
   justify-content: center;
   border-bottom: 1px solid #e1e1e1;
 
+  @media (max-width: 1240px) {
+    padding: 0 20px;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
@@ -105,6 +126,10 @@ export default {
       &:focus {
         border: 1px solid #b5b5b5 !important;
       }
+
+      @media (max-width: 1240px) {
+        width: auto;
+      }
     }
   }
 }
@@ -114,6 +139,10 @@ export default {
   justify-content: center;
   background: #eceaea;
   margin-top: auto;
+
+  @media (max-width: 1240px) {
+    padding: 0 20px;
+  }
 
   &__content {
     display: flex;
@@ -126,18 +155,35 @@ export default {
 
   &__info {
     display: flex;
+    justify-content: flex-end;
+    width: 100%;
     font-size: 14px;
+    max-width: 534px;
+
+    @media (max-width: 1240px) {
+      max-width: none;
+    }
+    @media (max-width: 1140px) {
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: flex-end;
+    }
 
     &-item {
       margin-right: 54px;
       display: flex;
       align-items: center;
+      white-space: nowrap;
 
       img {
         margin-right: 9px;
       }
 
       &:last-child {
+        margin-right: 0px;
+      }
+
+      @media (max-width: 1140px) {
         margin-right: 0px;
       }
     }
@@ -167,6 +213,11 @@ export default {
     grid-row-gap: 16px;
     width: 100%;
     margin-top: 39px;
+
+    @media (max-width: 1240px) {
+      grid-template-columns: 1fr 1fr 1fr;
+      margin-bottom: 39px;
+    }
   }
 }
 </style>

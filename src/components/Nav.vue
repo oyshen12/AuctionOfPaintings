@@ -19,8 +19,15 @@ export default {
 <style scoped lang='scss'>
 .navigation {
   display: flex;
+  justify-content: center;
+  width: 100%;
   font-size: 14px;
   transition: all 0.3s ease-out;
+  white-space: nowrap;
+
+  @media (max-width: 1240px) {
+    justify-content: flex-start;
+  }
 
   &__item {
     cursor: pointer;
