@@ -1,6 +1,11 @@
 
 <template>
-  <div class="app__wrap">
+  <div
+    class="app__wrap"
+    :style="{
+      overflow: showModal ? 'hidden' : '',
+    }"
+  >
     <header class="header">
       <div class="header__content">
         <navigation-component></navigation-component>
